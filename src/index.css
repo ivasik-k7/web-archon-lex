@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-brand: #f5b664;
+  --color-brand-outline: rgba(245, 182, 100, 0.25);
+
+  --color-surface-dark: #10141a;
+
+  --color-bg-primary: #050608;
+
+  --color-ink-high: #ffffff;
+  --color-ink-low: #8a94a3;
+
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.3);
+
+  /* Custom Border Radius */
+  --radius-pill: 9999px;
+
+  /* Custom Fonts (if you want to use font-body or font-display) */
+  --font-body: "DM Sans", ui-sans-serif, system-ui;
+  --font-display: "Playfair Display", serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    background: #050608;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: rgba(245, 182, 100, 0.25);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(16, 20, 26, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .glass-panel-light {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .form-input {
+    @apply w-full bg-surface-dark border border-border-subtle rounded-sm px-3 py-2.5 text-sm text-ink-high 
+           placeholder-ink-low outline-none transition-all duration-200 font-body;
+  }
+
+  .form-input:focus {
+    border-color: rgba(245, 182, 100, 0.45);
+    box-shadow: 0 0 0 3px rgba(245, 182, 100, 0.08);
+  }
+
+  .form-input:hover:not(:focus) {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .form-label {
+    @apply block text-xs font-medium text-ink-low mb-1.5 uppercase tracking-wider;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-pill bg-brand text-bg-primary text-sm font-semibold 
+           transition-all duration-200 cursor-pointer border border-brand-outline outline-none;
+    box-shadow: 0 8px 24px rgba(245, 182, 100, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: #ffce85;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 36px rgba(245, 182, 100, 0.45);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    background: #e9a84b;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-pill bg-transparent text-ink-high text-sm font-medium 
+           border border-border-strong transition-all duration-200 cursor-pointer outline-none;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-sm bg-transparent text-ink-low text-sm font-medium 
+           transition-all duration-200 cursor-pointer outline-none;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+  }
+
+  .section-chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-pill text-xs font-medium text-brand;
+    background: rgba(245, 182, 100, 0.12);
+    border: 1px solid rgba(245, 182, 100, 0.25);
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-200 cursor-pointer w-full;
+  }
+
+  .nav-item.active {
+    background: rgba(245, 182, 100, 0.12);
+    color: #f5b664;
+    border: 1px solid rgba(245, 182, 100, 0.2);
+  }
+
+  .nav-item:not(.active) {
+    color: #8a94a3;
+    border: 1px solid transparent;
+  }
+
+  .nav-item:not(.active):hover {
+    color: #c4cbd4;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Contract preview typography */
+  .contract-preview {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+
+  .contract-preview h1 {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .contract-preview h2 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 12px 0 6px;
+    text-align: center;
+  }
+
+  .contract-preview .contract-section {
+    margin: 10px 0;
+  }
+
+  .contract-section h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+
+  .contract-section p {
+    margin-bottom: 6px;
+    text-align: justify;
+  }
+
+  .contract-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 10px;
+  }
+
+  .contract-preview table th,
+  .contract-preview table td {
+    border: 0.5px solid #333;
+    padding: 4px 6px;
+    text-align: center;
+  }
+
+  .contract-preview table th {
+    background: #e8e8e8;
+    font-weight: 600;
+  }
+
+  .contract-preview .field-placeholder {
+    color: #999;
+    border-bottom: 1px dotted #999;
+    padding: 0 2px;
+    min-width: 60px;
+    display: inline-block;
+  }
+
+  .contract-preview .field-value {
+    font-weight: 600;
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding: 0 2px;
+    display: inline-block;
+  }
+
+  .contract-preview .signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  .contract-preview .signature-box {
+    width: 45%;
+    text-align: center;
+  }
+
+  .contract-preview .signature-line {
+    border-top: 0.5px solid #333;
+    padding-top: 4px;
+    font-size: 9px;
+    color: #555;
+  }
+}
+
+@media print {
+  body {
+    overflow: visible;
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+
+  @page {
+    margin: 15mm 20mm;
+    size: A4;
+  }
+
+  .preview-page {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: always;
+  }
+}

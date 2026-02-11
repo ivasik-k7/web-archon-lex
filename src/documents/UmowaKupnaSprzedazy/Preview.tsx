@@ -46,11 +46,6 @@ export function UmowaKupnaSprzedazyPreview({ data, logoSrc }: Props) {
           {data.numer_umowy || <F value="" placeholder="Numer umowy" />}
           {data.numer_umowy ? ` ` : ''}
         </p>
-        {data.numer_umowy && (
-          <p className="text-center text-xs mb-4" style={{ color: '#7c6a3e', fontWeight: 600 }}>
-            {data.numer_umowy}
-          </p>
-        )}
 
         {/* Intro */}
         <div className="contract-section">
